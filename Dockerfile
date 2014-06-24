@@ -11,7 +11,7 @@ FROM dockerfile/ubuntu
 RUN \
   apt-get update && \
   apt-get install -y cobbler cobbler-web && \
-  cobbler check && \
+#  cobbler check && \
 
 # Define mountable directories.
 #VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
