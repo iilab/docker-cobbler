@@ -7,11 +7,19 @@
 # Pull base image.
 FROM dockerfile/ubuntu
 
+RUN apt-get update
+RUN apt-get install -y python-zope.interface
+RUN apt-get install -y python-twisted
+RUN apt-get install -y apache2
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q tftpd-hpa
+
+#ENV DEBIAN_FRONTEND noninteractive
+
 # Install Cobbler.
-RUN \
-  apt-get update && \
-  apt-get install -y cobbler cobbler-web && \
+RUN apt-get install -y cobbler cobbler-web
 #  cobbler check && \
+#  cobbler sync
 
 # Define mountable directories.
 #VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
